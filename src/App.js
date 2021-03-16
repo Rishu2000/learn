@@ -1,7 +1,32 @@
 import React, {useState, useEffect} from "react"
 import './App.css';
 import Header from "./components/Header"
-import {BrowserRouter as Router, Link} from "react-router-dom"
+import {BrowserRouter as Router, Link, Route} from "react-router-dom"
+
+const Student = ({student}) => {
+  return (
+  <div>
+    <h1>{student.Name}</h1>
+    <p>My Name is {student.Name}. I am currently having {student.Rank} Rank and I have scored {student.Marks} Marks. 
+    I am persuing my dream and I will finally get it no matter what. I will try my level best.</p>
+  </div>
+  );
+};
+
+const Sidear = ({students, match}) => {
+  return(
+    <div>
+      {[...students].map((items,key) => (
+        <Link 
+          to = {items.FirstName}
+          className={`list-group-item list-group-item-action`+(match.params.FirstName === items.FirstName?` active`:``)} 
+          key={key}>
+            {items.Name}
+        </Link>
+      )) }
+    </div>
+  )
+}
 
 function App() {
 
@@ -22,18 +47,35 @@ function App() {
         <div className="container">
           <div className="row">
             <div className="col-4">
-              <ul class="list-group mt-3">
-                {[...students].map((items,key) => (
-                  <Link 
-                    to = {items.FirstName}
-                    class="list-group-item list-group-item-action" 
-                    key={key/*items.Rank*/}>
-                      {items.Name}
-                  </Link>
-                )) }
+              <ul className="list-group mt-3">
+                <Route
+                  path={["/:FirstName","/"]}
+                  render={({match}) => (
+                    <Sidear students={students} match={match}/> 
+                  )} >
+                </Route>
               </ul>
             </div>
-            <div className="col-8"></div>
+            <div className="col-8">
+              <Route path="/" exact={true}>
+                <h1>Welcome to the data</h1>
+                <p>Select from right.</p>
+              </Route>
+              {students.length > 0 && (
+              <Route 
+                path="/:FirstName"
+                render={({match}) => (
+                  <Student
+                    student={students.find((student) => 
+                      student.FirstName === match.params.FirstName
+                    )}
+                    />
+                )
+                }
+              >
+              </Route>
+              )}
+            </div>
           </div>
         </div>
       </div>  
