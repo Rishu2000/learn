@@ -21,11 +21,14 @@ function App() {
         <Header dark={true} className="pl-4">Header</Header>
         <div className="container">
           <div className="row">
-            <div className="col-12">
-              {students.length > 0? <pre className="border rounded bg-light p-3">
-                {JSON.stringify(students,null,2)}
-              </pre>: "Loading..."}
+            <div className="col-4">
+              <ul class="list-group mt-3">
+                {[...students].map((items,key) => (
+                  <li class="list-group-item" key={key/*items.Rank*/}>{items.FirstName}</li>
+                )) }
+              </ul>
             </div>
+            <div className="col-8"></div>
           </div>
         </div>
       </div>  
