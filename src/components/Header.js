@@ -4,7 +4,7 @@ function Header({className, dark, children}) {      //Passed argument 'children'
     dark = dark?"dark":"light";
     return (
         <nav className={`navbar navbar-${dark} bg-${dark}` + (className?" " +className:"")}>
-            <span className="navbar-brand">{children}</span>
+            <span>{children}</span>
         </nav>
     )
 }

@@ -43,7 +43,11 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Header dark={true} className="pl-4">Header</Header>
+        <Header dark={true} className="pl-4">
+          <Link to="/" className="navbar-brand">
+          Header
+          </Link>
+        </Header>
         <div className="container">
           <div className="row">
             <div className="col-4">
