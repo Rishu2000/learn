@@ -49,7 +49,7 @@ function App() {
             <div className="col-4">
               <ul className="list-group mt-3">
                 <Route
-                  path={["/:FirstName","/"]}
+                  path={["/:FirstName","/"]}    //Amazing way of adding same functionality for multiple pages.
                   render={({match}) => (
                     <Sidear students={students} match={match}/> 
                   )} >
@@ -66,7 +66,7 @@ function App() {
                 path="/:FirstName"
                 render={({match}) => (      //Use of match paremeter.
                   <Student
-                    student={students.find((student) => 
+                    student={students.find((student) =>     //Ultimate use of Find function.
                       student.FirstName === match.params.FirstName
                     )}
                     />
