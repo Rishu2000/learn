@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react"
 import './App.css';
 import Header from "./components/Header"
-import {BrowserRouter as Router} from "react-router-dom"
+import {BrowserRouter as Router, Link} from "react-router-dom"
 
 function App() {
 
@@ -24,7 +24,12 @@ function App() {
             <div className="col-4">
               <ul class="list-group mt-3">
                 {[...students].map((items,key) => (
-                  <li class="list-group-item" key={key/*items.Rank*/}>{items.FirstName}</li>
+                  <Link 
+                    to = {items.FirstName}
+                    class="list-group-item list-group-item-action" 
+                    key={key/*items.Rank*/}>
+                      {items.Name}
+                  </Link>
                 )) }
               </ul>
             </div>
