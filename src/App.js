@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from "react"
 import './App.css';
 import Header from "./components/Header"
-import {BrowserRouter as Router, Link, Route} from "react-router-dom"
+import {BrowserRouter as Router, Link, Route} from "react-router-dom"   //Learned real use of Route and Link components and these are Amazing.
 
-const Student = ({student}) => {
+const Student = ({student}) => {  
   return (
   <div>
     <h1>{student.Name}</h1>
@@ -13,7 +13,7 @@ const Student = ({student}) => {
   );
 };
 
-const Sidear = ({students, match}) => {
+const Sidear = ({students, match}) => {   //Use of match parameter.
   return(
     <div>
       {[...students].map((items,key) => (
@@ -64,7 +64,7 @@ function App() {
               {students.length > 0 && (
               <Route 
                 path="/:FirstName"
-                render={({match}) => (
+                render={({match}) => (      //Use of match paremeter.
                   <Student
                     student={students.find((student) => 
                       student.FirstName === match.params.FirstName
