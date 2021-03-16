@@ -20,9 +20,9 @@ function App() {
       <div className="container">
         <div className="row">
           <div className="col-12">
-            <pre className="border rounded bg-light p-3">
+            {students.length > 0? <pre className="border rounded bg-light p-3">
               {JSON.stringify(students,null,2)}
-            </pre>
+            </pre>: "Loading..."}
           </div>
         </div>
       </div>
